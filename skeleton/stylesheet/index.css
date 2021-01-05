@@ -1,0 +1,47 @@
+html, body, h1, p {
+    margin: 0;
+    border: 0;
+    padding: 0;
+    font: inherit;
+    text-align: inherit;
+    text-decoration: inherit;
+    color: inherit;
+    background: transparent;
+}
+
+
+.clock{
+    background-color: red;
+    border: 2px solid black;
+    /* display: flex; */
+    width: 500px;
+    background-position: center;
+    margin: 0px 50px 75px 100px;
+    /* display: flex;
+    justify-content: space-between; */
+    
+}
+
+.clock-header{
+    margin: 25px 50px 0px 100px;
+    font-size: 2pc;
+    font-family: Pirata one;
+    font-weight: 400;
+}
+
+.header{
+    margin: 25px 50px 0px 100px;
+    font-size: 2pc;
+    font-family: Pirata one;
+    font-weight: 400;
+}
+
+
+.time , .date{
+    font-family: Pirata one;
+    margin: 20px;
+    display: flex;
+    justify-content: space-between;
+   
+
+}

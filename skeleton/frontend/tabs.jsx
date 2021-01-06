@@ -1,5 +1,34 @@
 import React from 'react';
 
+
+class Headers extends React.Component {
+
+
+    render() {
+        const selected = this.props.selectedPane;
+        const headers = this.props.panes.map((pane, index) => {
+            const title = pane.title;
+            const klass = index === selected ? 'active' : 'inactive';
+
+            return (
+                <li
+                    key={index}
+                    className={klass}
+                    onClick={() => this.props.handleClick(index)}>
+                    {title}{' '}
+                </li>
+            );
+        });
+        return (
+            <ul className="tab-header">
+                {headers}
+            </ul>
+        )
+    }
+
+
+}
+
 class Tabs extends React.Component{
     constructor(props){
         super(props);
@@ -7,51 +36,39 @@ class Tabs extends React.Component{
         this.state = {
             selectedTab: 0
         }
+
+        this.handleClick = this.handleClick.bind(this)
     }
 
-    handleclick(num){
+    handleClick(num){
         this.setState({selectedTab: num})
     }
 
     render(){
-        let title = this.props.arr[this.state.selectedTab].title
-        let content = this.props.arr[this.state.selectedTab].content
+        const pane = this.props.arr[this.state.selectedTab]
+        
         
 
         return (
             
             <div>
-                <h1>
-                    tabs
+                <h1 className="tabs-h1">
+                    Tabs
                 </h1>
-                <Headers 
-                handleclick={() => this.handleclick()}
-        
-                />
-                <div>
-                    {content}
+                <div className="tabs-div">
+                    <Headers 
+                    handleClick={this.handleClick}
+                    selectedPane={this.state.selectedTab}
+                    panes={this.props.arr}
+                    />
+                    <div className="content">
+                        {pane.content}
+                    </div>
                 </div>
             </div>
         )
     }
 }
 
-class Headers extends React.Component{
-    constructor(props){
-        super(props)
-    }
 
-    render(){
-        let selected = this.selectedTab
-        return (
-            <div>
-                <h1 onClick={this.handleclick}>one</h1>
-                <h1 onClick={this.handleclick}>two</h1>
-                <h1 onClick={this.handleclick}>three</h1>
-            </div>
-        )
-    }
-
-
-}
 export default Tabs
